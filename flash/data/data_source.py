@@ -24,7 +24,7 @@ from torch.nn import Module
 from torchvision.datasets.folder import has_file_allowed_extension, make_dataset
 
 from flash.data.auto_dataset import AutoDataset, BaseAutoDataset, IterableAutoDataset
-from flash.data.process import ProcessState, Properties
+from flash.data.properties import ProcessState, Properties
 from flash.data.utils import CurrentRunningStageFuncContext
 
 
@@ -110,7 +110,7 @@ class DataSource(Generic[DATA_TYPE], Properties, Module):
             with CurrentRunningStageFuncContext(running_stage, "load_data", self):
                 load_data = getattr(
                     self, DataPipeline._resolve_function_hierarchy(
-                        'load_data',
+                        "load_data",
                         self,
                         running_stage,
                         DataSource,
